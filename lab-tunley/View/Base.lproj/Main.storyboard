@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vti-2v-Uyr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3y1-fY-6Jg">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="iZt-ly-ddB">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrackCell" rowHeight="160" id="NuN-P5-XWf" customClass="TrackCell" customModule="lab_tunley" customModuleProvider="target">
@@ -92,7 +93,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2858.7786259541986" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="3785.4961832061067" y="3.5211267605633805"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="bFl-ES-Qfi">
@@ -233,12 +234,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hm6-RZ-mgj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3677.0992366412211" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="4603.8167938931292" y="3.5211267605633805"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Tracks-->
         <scene sceneID="Dmc-T2-dLB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vti-2v-Uyr" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Tracks" image="music.note.list" catalog="system" id="7fR-Ry-LN9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="w92-nR-AOQ">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -251,10 +253,117 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7vY-7u-k7f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="2858.7786259541986" y="3.5211267605633805"/>
+        </scene>
+        <!--Albums-->
+        <scene sceneID="YB9-M2-S5c">
+            <objects>
+                <viewController id="bCP-KH-jwe" customClass="AlbumsViewController" customModule="lab_tunley" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UBv-Ih-Ysr">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hNA-7N-p3n">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ghA-vS-bm8">
+                                    <size key="itemSize" width="139" height="132"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AlbumCell" id="usM-Qd-Lun" customClass="AlbumCell" customModule="lab_tunley" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="139" height="132"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Wby-Hq-rW5">
+                                            <rect key="frame" x="0.0" y="0.0" width="139" height="132"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TYG-8t-f8u">
+                                                    <rect key="frame" x="0.0" y="0.0" width="139" height="132"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="TYG-8t-f8u" secondAttribute="trailing" id="8EY-ba-p8P"/>
+                                                <constraint firstItem="TYG-8t-f8u" firstAttribute="leading" secondItem="Wby-Hq-rW5" secondAttribute="leading" id="GTi-k0-m3D"/>
+                                                <constraint firstAttribute="bottom" secondItem="TYG-8t-f8u" secondAttribute="bottom" id="moe-xr-LSY"/>
+                                                <constraint firstItem="TYG-8t-f8u" firstAttribute="top" secondItem="Wby-Hq-rW5" secondAttribute="top" id="wh6-S4-tRH"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="139" height="132"/>
+                                        <connections>
+                                            <outlet property="albumImageView" destination="TYG-8t-f8u" id="OMz-QU-BqX"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Wv0-cy-aAh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hNA-7N-p3n" firstAttribute="leading" secondItem="Wv0-cy-aAh" secondAttribute="leading" id="1Be-JX-eVF"/>
+                            <constraint firstAttribute="trailing" secondItem="hNA-7N-p3n" secondAttribute="trailing" id="7LQ-GT-auL"/>
+                            <constraint firstItem="hNA-7N-p3n" firstAttribute="leading" secondItem="UBv-Ih-Ysr" secondAttribute="leading" id="MG9-fG-J30"/>
+                            <constraint firstItem="hNA-7N-p3n" firstAttribute="leading" secondItem="Wv0-cy-aAh" secondAttribute="leading" id="O66-i2-dJ5"/>
+                            <constraint firstAttribute="trailing" secondItem="hNA-7N-p3n" secondAttribute="trailing" id="aST-th-Jxj"/>
+                            <constraint firstAttribute="bottom" secondItem="hNA-7N-p3n" secondAttribute="bottom" id="cik-ax-ueP"/>
+                            <constraint firstItem="Wv0-cy-aAh" firstAttribute="trailing" secondItem="hNA-7N-p3n" secondAttribute="trailing" id="hQU-V8-CWB"/>
+                            <constraint firstItem="hNA-7N-p3n" firstAttribute="top" secondItem="UBv-Ih-Ysr" secondAttribute="top" id="pdu-7o-IiZ"/>
+                            <constraint firstItem="hNA-7N-p3n" firstAttribute="top" secondItem="UBv-Ih-Ysr" secondAttribute="top" id="vGB-If-gVx"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Albums" id="77u-fx-OHH"/>
+                    <connections>
+                        <outlet property="collectionView" destination="hNA-7N-p3n" id="Sb3-pD-bYR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VP5-em-48r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4390.0763358778622" y="775.35211267605632"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="mVx-4L-IEW">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="3y1-fY-6Jg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WQG-PX-QMn">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="vti-2v-Uyr" kind="relationship" relationship="viewControllers" id="Q4G-I6-oTm"/>
+                        <segue destination="ZNp-PQ-CdF" kind="relationship" relationship="viewControllers" id="FzO-a3-zGS"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n7K-Ls-E6k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="1932.06106870229" y="3.5211267605633805"/>
+        </scene>
+        <!--Albums-->
+        <scene sceneID="o2l-oB-ceC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZNp-PQ-CdF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Albums" image="guitars.fill" catalog="system" id="B7M-7E-y1W"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qlq-RQ-90Q">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bCP-KH-jwe" kind="relationship" relationship="rootViewController" id="VQ7-r1-SQR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6E8-dM-HXE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3464.8854961832058" y="775.35211267605632"/>
         </scene>
     </scenes>
     <resources>
+        <image name="guitars.fill" catalog="system" width="128" height="98"/>
+        <image name="music.note.list" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

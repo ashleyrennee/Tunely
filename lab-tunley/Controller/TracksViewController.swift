@@ -9,42 +9,73 @@ import UIKit
 
 class TracksViewController: UIViewController,UITableViewDataSource {
    
-    // TODO: Pt 1 - Add a tracks property
+
     var tracks : [Track] = []
-    
-    // TODO: Pt 1 - Add table view outlet
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //URL session
+        let url = URL(string: "https://itunes.apple.com/search?term=bloodorange&attribute=artistTerm&entity=song&media=music")!
+        let request = URLRequest(url: url)
+        let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+            if let error = error {
+                  print("❌ Network error: \(error.localizedDescription)")
+              }
+            guard let data = data else {
+                   print("❌ Data is nil")
+                   return
+               }
+            
+            do {
 
-        // TODO: Pt 1 - Set tracks property with mock tracks array
-        tracks = Track.mockTracks
-        print(tracks)
+                let decoder = JSONDecoder()
+                
+                let dateFormatter = DateFormatter()
+                
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+                
+                decoder.dateDecodingStrategy = .formatted(dateFormatter)
+                
+                let response = try decoder.decode(TrackResults.self, from: data)
+                
+                let tracks = response.results
+            
+                //populating data into TracksVC
+                DispatchQueue.main.async {
+                    self?.tracks = tracks
+                    self?.tableView.reloadData()
+                }
+        
+                print("✅ \(tracks)")
+            
+             } catch {
+                 print("❌ Error parsing JSON: \(error.localizedDescription)")
+             }
+         }
+        //begin network request
+        task.resume()
         
         tableView.dataSource = self
         
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // MARK: Pt 1 - Pass the selected track to the detail view controller
-        // Get the cell that triggered the segue
         if let cell = sender as? UITableViewCell,
-           // Get the index path of the cell from the table view
+
            let indexPath = tableView.indexPath(for: cell),
-           // Get the detail view controller
+
            let detailViewController = segue.destination as? DetailViewController {
             
-            // Use the index path to get the associated track
             let track = tracks[indexPath.row]
             
-            // Set the track on the detail view controller
             detailViewController.track = track
             
         }
     }
 
-    // MARK: Pt 1 - Add table view data source methods
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tracks.count
     }
@@ -62,10 +93,8 @@ class TracksViewController: UIViewController,UITableViewDataSource {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Get the index path for the current selected table view row (if exists)
         if let indexPath = tableView.indexPathForSelectedRow {
 
-        // Deselect the row at the corresponding index path
         tableView.deselectRow(at: indexPath, animated: true)
         }
     }

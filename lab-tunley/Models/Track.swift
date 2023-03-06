@@ -7,8 +7,13 @@
 
 import Foundation
 
-// TODO: Pt 1 - Create a Track model struct
-struct Track {
+
+
+struct TrackResults: Decodable{
+    let results : [Track]
+}
+
+struct Track :Decodable{
     let trackName : String
     let artistName : String
     let artworkUrl100 : URL
@@ -17,8 +22,9 @@ struct Track {
     let releaseDate: Date
     let trackTimeMillis: Int
 }
-// MARK: Mock tracks static var
-extension Track {
+
+
+/*extension Track {
     static var mockTracks: [Track] =
     [
         Track(trackName: "You're Not Good Enough", artistName: "Blood Orange", artworkUrl100: URL(string: "https://is5-ssl.mzstatic.com/image/thumb/Music124/v4/52/ac/30/52ac30de-191a-7f46-b6cd-051f5be848ad/BloodOrangeCVRupdated.jpg/100x100bb.jpg")!,collectionName: "Cupid Deluxe",primaryGenreName: "Alternative",releaseDate: Date(),trackTimeMillis: 261364),
@@ -26,7 +32,7 @@ extension Track {
         Track(trackName: "Champagne Coast", artistName: "Blood Orange", artworkUrl100:  URL(string: "https://is4-ssl.mzstatic.com/image/thumb/Music124/v4/da/5d/19/da5d19d4-bbb4-7cee-ad2f-2505b698f445/mzi.cqmfeflv.jpg/100x100bb.jpg")!,collectionName: "Coastal Grooves",primaryGenreName: "Alternative",releaseDate: Date(),trackTimeMillis: 294413),
         Track(trackName: "Sutphin Boulevard", artistName: "Blood Orange", artworkUrl100: URL(string: "https://is3-ssl.mzstatic.com/image/thumb/Music/0f/3a/5f/mzi.zyazxulx.jpg/100x100bb.jpg")!,collectionName: "Coastal Grooves",primaryGenreName: "Alternative",releaseDate: Date(),trackTimeMillis: 214040)
     ]
-}
+}*/
 
 // MARK: Helper Methods
 /// Converts milliseconds to mm:ss format
